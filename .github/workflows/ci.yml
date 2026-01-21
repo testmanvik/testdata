@@ -2,9 +2,14 @@ name: CI Workflow
 
 on:
   push:
+
+  
     branches:
       - main
   pull_request:
+  workflow_dispatch:   # Manual trigger
+  schedule:
+    - cron: '0 0 * * *' 
 
 jobs:
   build:
