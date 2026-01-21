@@ -1,16 +1,21 @@
 name: CI Workflow
 
 on:
-  push:
-    branches:
-      - main
-  pull_request:
-              workflow_dispatch:     
-                inputs:
-                  message:
-                    description: 'Message passed to the workflow'
-                    required: false
-                    default: ''
+  workflow_dispatch:
+    inputs:
+      logLevel:
+        description: 'Log level'
+        required: true
+        default: 'warning'
+        type: choice
+        options:
+        - info
+        - warning
+        - debug
+        message:
+        description: 'Message passed to the workflow'
+        required: false
+        default: ''
 
   schedule:
     - cron: '0 0 * * *' 
