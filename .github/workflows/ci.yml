@@ -3,41 +3,17 @@ name: CI Workflow
 on:
   workflow_dispatch:
     inputs:
-      logLevel:
-        description: 'Log level'
-        required: true
-        default: 'warning'
-        type: choice
-        options:
-        - info
-        - warning
-        - debug
-        message:
+      message:
         description: 'Message passed to the workflow'
         required: false
         default: ''
 
-  schedule:
-    - cron: '0 0 * * *' 
-
 jobs:
   build:
     runs-on: ubuntu-latest
-
     steps:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Set up Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-
       - name: Print message
         run: echo "Message: ${{ github.event.inputs.message }}"
-
-      - name: Install dependencies
-        run: npm install
-
-      - name: Run tests
-        run: npm test
