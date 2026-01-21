@@ -5,12 +5,13 @@ on:
     branches:
       - main
   pull_request:
-  workflow_dispatch:       # <-- must contain the inputs as a nested field
-    inputs:
-      message:
-        description: 'Message passed to the workflow'
-        required: false
-        default: ''
+              workflow_dispatch:     
+                inputs:
+                  message:
+                    description: 'Message passed to the workflow'
+                    required: false
+                    default: ''
+
   schedule:
     - cron: '0 0 * * *' 
 
